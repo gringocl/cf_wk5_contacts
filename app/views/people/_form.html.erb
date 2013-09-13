@@ -1,0 +1,54 @@
+<%= form_for(@person) do |f| %>
+  <% if @person.errors.any? %>
+    <div id="errorExplanation">
+      <h2><%= pluralize(@person.errors.count, "error") %> prohibited
+        this post from being saved:</h2>
+      <ul>
+      <% @person.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+    <% end %>
+  <p>
+    <%= f.label :first_name %></br>
+    <%= f.text_field :first_name %>
+  </p>
+
+  <p>
+    <%= f.label :last_name %></br>
+    <%= f.text_field :last_name %>
+  </p>
+
+  <p>
+    <%= f.label :phone %></br>
+    <%= f.text_field :phone %>
+  </p>
+
+  <p>
+    <%= f.fields_for :address do |a| %>
+      <%= a.label :street_address %></br>
+      <%= a.text_field :street_address %>
+  </p>
+
+  <p>
+      <%= a.label :city %></br>
+      <%= a.text_field :city %>
+  </p>
+
+  <p>
+      <%= a.label :state %></br>
+      <%= a.text_field :state %>
+  </p>
+
+  <p>
+      <%= a.label :zipcode %></br>
+      <%= a.text_field :zipcode %>
+  </p>
+    <% end %>
+
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>
